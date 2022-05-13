@@ -1,0 +1,159 @@
+Test Case																								
+																								
+Project Name: Password Hashing Application																								
+Reference Document: QA Assignment from JumpCloud																								
+Created By: Janak Regmi																								
+Date of Creation: 5/10/2022																								
+																								
+Test Case ID  |	Test Scenario							      						| Status (Pass/Fail)																			
+																								
+JC_PwHApp_1	Verify the application supports Post to the /hash endpoint	      						| Pass																			
+		Steps: 
+		1. Import JSON collection on Postman
+		2. Enter the URL http://127.0.0.1:8088/hash in the address bar																						
+		3. Send request for the POST																						
+		4. Verify that the response is 200																						
+		5. Verify that response has a job identifier integer
+Test data: Post Body: {"password":"angrymonkey"}
+Expected Result: Response should contain job identifier integer
+																								
+JC_PwHApp_2	Verify the application supports Get the base64 encoded password endpoint					| Pass	
+		Steps:
+		1. Import JSON collection on Postman																						
+		2. Enter an URL http://127.0.0.1:8088/hash/{identifier} in the address bar																						
+		3. Add job identifier on path parameter																						
+		4. Send request for the GET																				
+		5. Verify that the response is 200																						
+		6. Verify that response has encoded password	
+Expected Result: Verify that response has encoded password
+																								
+JC_PwHApp_3	Verify the application supports Get the stats endpoint								| Pass
+		Steps:
+		1. Import JSON collection on Postman																						
+		2. Enter the URL http://127.0.0.1:8088/stats the address bar																						
+		3. Send request for the GET																						
+		4. Verify that the response is 200																						
+		5. Verify body response contains stats of requests
+Expected Result: Verify body response contains stats of requests
+																								
+JC_PwHApp_4	Verify POST to /hash accepts password and returns job identifier      						| Pass		
+		Steps:
+		1. Import JSON collection on Postman																					
+		2. Enter the URL http://127.0.0.1:8088/hash in the address bar 																					
+		3. Send request for the POST																						
+		4. Verify that the response is 200																						
+		5. Verify that response has a job identifier integer	
+Test Data: Post Body: {"password":"angrymonkey"}
+Expected Result: Job identifier in the response body and 200 status code
+																								
+JC_PwHApp_5	Verify invalid POST to /hash if payload password field is empty (payload: password empty)			| FAIL	
+		Steps:
+		1. Import JSON collection on Postman																				
+		2. Enter the URL http://127.0.0.1:8088/hash in the address bar																						
+		3. Send request for the POST																						
+		4. Verify that the response is not successful																						
+		5. Verify that response has no job integer
+Expected Result: Job identifier should not be returned
+																								
+JC_PwHApp_6	Verify invalid POST to /hash if the payload is empty								| Pass
+		Steps:
+		1. Import JSON collection on Postman																						
+		2. Enter the URL http://127.0.0.1:8088/hash in the address bar																						
+		3. Send request for the POST																						
+		4. Verify 400 bad request response is displayed	
+Expected Result: Verify that response has no job identifier integer
+																								
+JC_PwHApp_7	Verify job identifier is returned immediately after password is accepted					| FAIL
+		1. Import JSON collection on Postman																					
+		2. Enter an URL http://127.0.0.1:8088/hash/{identifier} in the address bar																						
+		3. Send request for the POST																						
+		4. Verify job identifier is returned immediately
+Expected Result: Job identifier should returned immediately after password is accepted	
+																								
+JC_PwHApp_8	Verify application waits 5 seconds before computing the password hash						| PASS
+		Steps:
+		1. Import JSON collection on Postman																						
+		2. Enter an URL http://127.0.0.1:8088/hash in the address bar																						
+		3. Set up an Environment																						
+		4. Send request for the POST																						
+		5. Verify total process time is longer than 5 seconds
+Expected Result: Application should waits 5 seconds before computing the password hash
+																								
+JC_PwHApp_9	Verify application returns a BASE64 encoded password for a correct job identifier GET test			| PASS
+		Steps:
+		1. Import JSON collection on Postman																					
+		2. Enter the URL http://127.0.0.1:8088 the address bar																						
+		3. Send request for the GET																						
+		4. Verify that the response is 200																						
+		5. Verify body response contains encoded passworded
+Expected Result: Encoded password should be returned in the body corresponding to job identifier	
+																								
+																								
+JC_PwHApp_10	Verify GET to /stats returns average time of total requests (should be around 5 sec)				| FAIL
+		Steps:
+		1. Import JSON collection on Postman																					
+		2. Enter the URL http://127.0.0.1:8088/stats the address bar																						
+		3. Send request for the GET																						
+		4. Verify that the response is 200																						
+		5. Verify body response contains total requests and average time of requests
+Expected Result: Verify that response has a job identifier integer	
+																								
+JC_PwHApp_11	Verify POST to /stats should not work										| FAIL
+		Steps:
+		1. Import JSON collection on Postman																				
+		2. Enter the URL http://127.0.0.1:8088/hash in the address bar																						
+		3. Send request for the POST																						
+		4. Verify that 400 bad request error is displayed																						
+		5. Verify no response body is displayed	
+Expected Result: 400 bad request error and no response body should display	
+																								
+JC_PwHApp_12	Concurrent POST requests to /hash should return unique job identifiers						| PASS
+		Steps:
+		1. Import JSON collection on Postman																					
+		2. Enter the URL http://127.0.0.1:8088/hash in the address bar																						
+		3. Send request for the POST																						
+		4. Verify that the response is 200																						
+		5. Verify that response has a job identifier integer																						
+		6. Send second request for the POST																						
+		7. Verify that the response is 200																						
+		8. Verify that response has a different job identifier integer
+Expected Result: Identifier integer should be different for each request	
+																								
+JC_PwHApp_13	POST to /hash with shutdown should shut the app down								| PASS	
+		Steps:
+		1. Import JSON collection on Postman																				
+		2. Enter the URL http://127.0.0.1:8088/hash the address bar																						
+		3. Send request for the POST																						
+		4. Verify that the response body is empty																						
+		5. Verify cmd application shuts down	
+Expected Result: Verify cmd application shuts down	
+																								
+JC_PwHApp_14	In process of shutdown the onflight request should complete							| PASS	
+		Steps:
+		1. Import JSON collection on Postman																					
+		2. Have two tabs open for Post to /hash and shutdown																						
+		3. Send request for the POST to /hash																						
+		4. Send request to shutdown before 5 seconds																						
+		5. Verify that Post to/hash contains job identifier in response																						
+		6.Verify shutdown has 200 ok with empty body response																						
+		7. Verify cmd application shuts down	
+Expected Result: Application should shuts down	
+																								
+JC_PwHApp_15	Verify Get request for shutdown should throw the bad request error						| FAIL	
+		Steps:
+		1. Import JSON collection on Postman																					
+		2. Enter the URL http://127.0.0.1:8088/hash the address bar																						
+		3. Send request for the POST																						
+		4. Verify that the response body is empty																						
+		5. Verify that 400 bad request is displayed	
+Expected Result: Application should shuts down	
+																								
+JC_PwHApp_16	Verify GET to /stats throws bad request error when json payload is on body					| FAIL
+		Steps:
+		1. Import JSON collection on Postman																					
+		2. Enter the URL http://127.0.0.1:8088/hash the address bar																						
+		3. Send request for the GET																						
+		4. Verify that 400 bad request is displayed																						
+Expected Result: 400 bad request should be present when json payload is present in GET request body
+
+***
