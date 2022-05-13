@@ -1,0 +1,58 @@
+Defect				
+It contains Defect ID, Title, Recreate steps, Expected Result, Actual Result
+				
+Defect_01	Job Identifier is returned immediately after password is accepted	
+    		1. Import JSON collection on Postman	
+		2. Enter an URL http://127.0.0.1:8088/hash/{identifier} in the address bar		
+		3. Send request for the POST		
+		4. Verify job identifier is returned immediately		
+Expected Result: Job Identifier should be returned immediately	
+Actual Result: Job Identifier is returned after more than 5 seconds		
+				
+Defect_02	Verify GET to /stats returns average time of total requests (should be around 5 sec)		
+		1. Import JSON collection on Postman
+		2. Enter the URL http://127.0.0.1:8088/stats the address bar		
+		3. Send request for the GET		
+		4. Verify that the response is 200		
+		5. Verify body response contains total requests and average time of requests	
+Expected Result: Body response contains total requests and average time of requests	
+Actual Result: Verify that response has a job identifier integer
+				
+				
+Defect_03	Verify POST to /stats should not work	
+		1. Import JSON collection on Postman	
+		2. Enter the URL http://127.0.0.1:8088/hash in the address bar		
+		3. Send request for the POST		
+		4. Verify that 400 bad request error is displayed		
+		5. Verify no response body is displayed	
+Expected Result: No response body should displayed	
+Actual Result: 400 bad request error and no response body display
+				
+				
+Defect_04	Verify Get request for shutdown should throw the bad request error	
+		1. Import JSON collection on Postman	
+		2. Enter the URL http://127.0.0.1:8088/hash the address bar		
+		3. Send request for the GET		
+		4. Verify that the response body is empty		
+		5. Verify that 400 bad requests is displayed
+Expected Result: 400 bad request should displayed	
+Actual Result: Cmd application shuts down
+				
+				
+Defect_05	Verify GET to /stats throws bad request error when json payload is on body	
+		1. Import JSON collection on Postman		 
+		2. Enter the URL http://127.0.0.1:8088/hash the address bar		
+		3. Send request for the GET		
+		4. Verify that 400 bad request is displayed
+Expected Result: 400 bad request should be present when json payload is present in GET request body
+Actual Result: However its presenting 200 ok
+				
+				
+Defect_06	Verify invalid POST to /hash if payload password field is empty (payload: password empty)	
+		1. Import JSON collection on Postman	
+		2. Enter the URL http://127.0.0.1:8088/hash in the address bar		
+		3. Send request for the POST		
+		4. Verify that the response is not successful		
+		5. Verify that response has no job integer	
+Expected Result: Job identifier should not be returned	
+Actual Result: Job identifier returned and its response 
