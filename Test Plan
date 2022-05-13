@@ -1,0 +1,19 @@
+Test Plan	
+TP ID  | Scenario										      | Application		      | Automation
+			
+TP_01	Verify the application supports Post to the /hash endpoint					Password Hashing Application	Automated
+TP_02	Verify the application supports Get the base64 encoded password endpoint			Password Hashing Application	
+TP_03	Verify the application supports Get the stats endpoint						Password Hashing Application	Automated
+TP_04	Verify POST to /hash accepts password and returns job identifier				Password Hashing Application	Automated
+TP_05	Verify invalid POST to /hash if payload password field is empty (payload: password empty)	Password Hashing Application	Automated
+TP_06	Verify invalid POST to /hash if the payload is empty						Password Hashing Application	Automated
+TP_07	Verify job identifier is returned immediately after password is accepted			Password Hashing Application	
+TP_08	Verify application waits 5 seconds before computing the password hash				Password Hashing Application	
+TP_09	Verify application returns a BASE64 encoded password for a correct job identifier GET test	Password Hashing Application	
+TP_10	Verifyy GET to /stats returns average time of total requests (should be around 5 sec)		Password Hashing Application	
+TP_11	Verify POST to /stats should not work								Password Hashing Application	Automated
+TP_12	Concurrent POST requests to /hash should return unique job identifiers				Password Hashing Application	
+TP_13	POST to /hash with shutdown should shut the app down						Password Hashing Application	
+TP_14	In process of shutdown the onflight request should complete					Password Hashing Application	
+TP_15	Verify Get request for shutdown should throw the bad request error				Password Hashing Application	Automated
+TP_16	Verify GET to /stats throws bad request error when json payload is on body			Password Hashing Application
