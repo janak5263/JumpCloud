@@ -1,6 +1,6 @@
 # Obtaining the Password Hashing Application
 ## Background:
-A password hashing application in Golang was implemented in this assignment by JumpCloud. I was assigned to create test plans, and test cases, test the application, execute the test cases, and report a defect that was purposefully left in the application. Here, I am presenting my test plan, Test cases, Test report, and bugs which I found while testing. A JSON file is created automatically for Postman. The scenarios are marked as "automated" under the test cases topic.
+A password hashing application in Golang was implemented in this assignment by JumpCloud. I was assigned to create test plans, and test cases, test the application, execute the test cases, and report a defect that was purposefully left in the application. Here, I am presenting my test plan, Test cases, Test report, and bugs which I found while testing. A automated JSON file is created for Postman The scenarios are marked as "automated" under the test cases topic.
 
 
 ## Specification: 
