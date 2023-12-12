@@ -2,9 +2,8 @@
 ## Background:
 A password hashing application in Golang was implemented in this assignment by JumpCloud. I was assigned to create test plans, and test cases, test the application, execute the test cases, and report a defect that was purposefully left in the application. Here, I am presenting my test plan, Test cases, Test report, and bugs which I found while testing. A automated JSON file is created for Postman. The scenarios are marked as "automated" under the test cases topic.
 
-
 ## Specification: 
-The following is the requirement specification that was used in building the password hashing application. It describes what the application should do. 
+The requirement specification used to create the password hashing application is as follows. It outlines the intended functions of the program.
 
 - When launched, the application should wait for http connections. 
 - It should answer on the PORT specified in the PORT environment variable. 
@@ -52,13 +51,11 @@ Following is the scenario for testing in this test plan:
 - TP_16 : Verify GET to /stats throws bad request error when json payload is on body
 
 ## Test Cases:
-In test cases, I tried to cover Project Name, Reference Document, Created By, and Date of Creation, and it is in the below format. 
-
-Test Case ID | Test Scenario | Test Case | Steps | Test data | Expected Result | Status (Pass/Fail)
+I attempted to include the Project Name, Reference Document, Created By, and Date of Creation in test cases, and the format is as follows.
+Format: Test Case ID | Test Scenario | Test Case | Steps | Test data | Expected Result | Status (Pass/Fail)
 
 ## Test/Automation Execution:
-The test is based on the above scenarios and test steps. There were no screenshots provided. For the manual testing there is a “Manual tests.json” file. Import to Postman, and follow the steps from the scenario. To automate testing, upload the "automated tests.json" file to Postman, click on the scenario, and send the request.
-
+These scenarios and test phases serve as the foundation for the test. Screenshots were not included. Use the "Manual tests.json" file, import it into Postman, and proceed according to the scenario for the manual testing. Upload the "automated tests.json" file to Postman, choose the scenario, and then submit the request to do automated testing.
 
 ## Bug:
 During testing, I discovered some bugs, which are as follows. 
